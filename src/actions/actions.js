@@ -1,0 +1,1 @@
+export const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
