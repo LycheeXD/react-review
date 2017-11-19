@@ -1,9 +1,9 @@
-// import { ON_INPUT_CHANGE } from '../actions/actions';
+import { ON_ADD_EXPENSE } from '../actions/actions';
 
 const expensesReducer = (state = [], action) => {
   switch (action.type) {
-    // case ON_INPUT_CHANGE :
-    //   return action.payload;
+    case ON_ADD_EXPENSE :
+      return [...state, action.payload];
     default:
       return state;
   }
