@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from '../store';
 
-import Header from './Header';
-import ReduxTest from './ReduxTest';
-import FourOhFour from './FourOhFour';
+import store from './store';
+import Header from './components/Header';
+import ReduxTest from './components/ReduxTest';
+import FourOhFour from './components/FourOhFour';
 
 const Home = () => (
   <div>
