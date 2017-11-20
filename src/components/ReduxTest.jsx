@@ -6,13 +6,17 @@ import { setInputValue } from '../actions/actionCreators';
 
 const ReduxTest = (props) => (
   <div className="landing">
-    <h1>{props.reduxTestReducer}</h1>
+    <h2>{props.reduxTestReducer}</h2>
+    <h2>{props.expensesReducer.length}</h2>
+    <h2>{props.filtersReducer.sortBy}</h2>
     <input onChange={props.onInputChange} type="text" value={props.reduxTestReducer} placeholder="redux" />
   </div>
 );
 
 const mapStateToProps = state => ({
-  reduxTestReducer: state.reduxTestReducer
+  reduxTestReducer: state.reduxTestReducer,
+  expensesReducer: state.expensesReducer,
+  filtersReducer: state.filtersReducer
 });
 
 const mapDispatchToProps = dispatch => ({

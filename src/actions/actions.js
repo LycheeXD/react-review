@@ -1,1 +1,2 @@
 export const ON_INPUT_CHANGE = 'ON_INPUT_CHANGE';
+export const ON_ADD_EXPENSE = 'ON_ADD_EXPENSE';
