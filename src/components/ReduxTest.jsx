@@ -4,19 +4,26 @@ import { connect } from 'react-redux';
 
 import { setInputValue } from '../actions/actionCreators';
 
-const ReduxTest = (props) => (
+// can probably use object destructuring here too
+const ReduxTest = props => (
   <div className="landing">
     <h2>{props.reduxTestReducer}</h2>
     <h2>{props.expensesReducer.length}</h2>
     <h2>{props.filtersReducer.sortBy}</h2>
-    <input onChange={props.onInputChange} type="text" value={props.reduxTestReducer} placeholder="redux" />
+    <input 
+      onChange={props.onInputChange} 
+      type="text" 
+      value={props.reduxTestReducer} 
+      placeholder="redux" 
+    />
   </div>
 );
 
-const mapStateToProps = state => ({
-  reduxTestReducer: state.reduxTestReducer,
-  expensesReducer: state.expensesReducer,
-  filtersReducer: state.filtersReducer
+// object destructuring might be useful here
+const mapStateToProps = ({reduxTestReducer, expensesReducer, filtersReducer}) => ({
+  reduxTestReducer,
+  expensesReducer,
+  filtersReducer
 });
 
 const mapDispatchToProps = dispatch => ({
