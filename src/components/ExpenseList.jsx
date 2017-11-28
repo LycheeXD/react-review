@@ -4,15 +4,30 @@ import _ from 'lodash';
 
 import ExpenseItem from './ExpenseItem';
 
-const listOfExpenses = expenses => (
-  _.map(expenses, eachExpense => (
+const listOfExpenses = (expenses, searchInput) => {
+  const filteredExpenseList = filterExpenses(expenses, searchInput);
+
+  return _.map(filteredExpenseList, eachExpense => (
     <ExpenseItem
       key={eachExpense.description}
       description={eachExpense.description}
       amount={eachExpense.amount}
     />
-  ))
-);
+  ));
+};
+
+// display only expenses that starts with the search input
+const filterExpenses = (expenses, searchInput) => {
+  return _.filter(expenses, eachExpense => {
+    const eachExpenseDescriptionWordArray = eachExpense.description.split(' ');
+
+    return _.some(eachExpenseDescriptionWordArray, eachDescriptionWord => {
+      if(_.startsWith(eachDescriptionWord, searchInput)) {
+        return true;
+      }
+    });
+  });
+};
 
 
 const ExpenseList = props => (
@@ -22,13 +37,14 @@ const ExpenseList = props => (
     </h3>
 
     <div>
-      {listOfExpenses(props.expenses)}
+      {listOfExpenses(props.expenses, props.searchInput)}
     </div>
   </div>
 );
 
 const mapStateToProps = state => ({
-  expenses: state.expensesReducer
+  expenses: state.expensesReducer,
+  searchInput: state.searchFilterReducer
 });
 
 export default connect(mapStateToProps)(ExpenseList);
