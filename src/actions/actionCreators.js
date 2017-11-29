@@ -1,6 +1,6 @@
-import { ON_INPUT_CHANGE } from './actions';
-import { ON_ADD_EXPENSE } from './actions';
-import { ON_SEARCH_FILTER_CHANGE } from './actions';
+import { ON_INPUT_CHANGE,
+         ON_ADD_EXPENSE,
+         ON_SEARCH_FILTER_CHANGE } from './actions';
 
 export const setInputValue = inputValue => ({
     type: ON_INPUT_CHANGE,
