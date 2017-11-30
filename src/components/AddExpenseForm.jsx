@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addExpense } from '../actions/actionCreators';
 
 class AddExpenseForm extends Component {
   constructor(props) {
@@ -11,7 +14,7 @@ class AddExpenseForm extends Component {
 
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
-    this.onHandleFormSubmit = this.onHandleFormSubmit.bind(this);
+    this.onAddExpenseSubmit = this.onAddExpenseSubmit.bind(this);
   }
 
   onDescriptionChange(event) {
@@ -30,15 +33,24 @@ class AddExpenseForm extends Component {
   }
 
   onAmountChange(event) {
-    event.persist();
+    const amount = event.target.value;
 
-    this.setState(() => ({
-      amount: event.target.value
-    }));
+    if(amount.match(/^\d*(\.\d{0,2})?$/)) {
+      this.setState(() => ({
+        amount
+      }));
+    }
   }
 
-  onHandleFormSubmit() {
+  onAddExpenseSubmit(event) {
+    event.preventDefault();
 
+    this.setState(() => ({
+        description: '',
+        amount: ''
+    }));
+
+    this.props.onAddExpenseSubmit(this.state);
   }
 
   render() {
@@ -60,10 +72,18 @@ class AddExpenseForm extends Component {
             value={this.state.amount}
             onChange={this.onAmountChange}
           />
+
+          <button onClick={this.onAddExpenseSubmit} type="submit">Add</button>
         </form>
       </div>
     );
   }
 }
 
-export default AddExpenseForm;
+const mapDispatchToProps = dispatch => ({
+  onAddExpenseSubmit(inputExpense) {
+    dispatch(addExpense(inputExpense));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(AddExpenseForm);
