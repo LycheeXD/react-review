@@ -9,7 +9,8 @@ const listOfExpenses = (expenses, searchInput) => {
 
   return _.map(filteredExpenseList, eachExpense => (
     <ExpenseItem
-      key={eachExpense.description}
+      key={eachExpense.id}
+      id={eachExpense.id}
       description={eachExpense.description}
       amount={eachExpense.amount}
     />

@@ -1,6 +1,7 @@
 import { ON_INPUT_CHANGE,
          ON_ADD_EXPENSE,
-         ON_SEARCH_FILTER_CHANGE } from './actions';
+         ON_SEARCH_FILTER_CHANGE,
+         ON_DELETE_EXPENSE } from './actions';
 
 export const setInputValue = inputValue => ({
     type: ON_INPUT_CHANGE,
@@ -18,3 +19,8 @@ export const setSearchFilterValue = searchFilterInputValue => ({
   type: ON_SEARCH_FILTER_CHANGE,
   payload: searchFilterInputValue
 });
+
+export const deleteExpense = expenseId => ({
+  type: ON_DELETE_EXPENSE,
+  payload: expenseId
+})
