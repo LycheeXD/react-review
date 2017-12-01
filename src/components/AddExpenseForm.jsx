@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import uuid from 'uuid';
 
 import { addExpense } from '../actions/actionCreators';
 
@@ -45,12 +46,16 @@ class AddExpenseForm extends Component {
   onAddExpenseSubmit(event) {
     event.preventDefault();
 
+    this.props.onAddExpenseSubmit({
+      ...this.state,
+      id: uuid()
+    });
+
     this.setState(() => ({
         description: '',
         amount: ''
     }));
 
-    this.props.onAddExpenseSubmit(this.state);
   }
 
   render() {
