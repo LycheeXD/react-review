@@ -8,8 +8,6 @@ const Header = () => (
     &nbsp;
     <Link to="/dashboard">Dashboard</Link>
     &nbsp;
-    <Link to="/addexpense">Add Expense</Link>
-    &nbsp;
     <Link to="/reduxtest">ReduxTest</Link>
   </header>
 );

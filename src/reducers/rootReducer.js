@@ -2,14 +2,14 @@ import { combineReducers } from 'redux';
 
 import reduxTestReducer from './reduxTestReducer';
 import expensesReducer from './expensesReducer';
-import filtersReducer from './filtersReducer';
 import searchFilterReducer from './searchFilterReducer';
+import sortReducer from './sortReducer';
 
 const rootReducer = combineReducers({
   reduxTestReducer,
   expensesReducer,
-  filtersReducer,
-  searchFilterReducer
+  searchFilterReducer,
+  sortReducer
 });
 
 export default rootReducer;

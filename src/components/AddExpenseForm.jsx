@@ -46,15 +46,17 @@ class AddExpenseForm extends Component {
   onAddExpenseSubmit(event) {
     event.preventDefault();
 
-    this.props.onAddExpenseSubmit({
-      ...this.state,
-      id: uuid()
-    });
+    if(this.state.description && this.state.amount) {
+      this.props.onAddExpenseSubmit({
+        ...this.state,
+        id: uuid()
+      });
 
-    this.setState(() => ({
-        description: '',
-        amount: ''
-    }));
+      this.setState(() => ({
+          description: '',
+          amount: ''
+      }));
+    }
 
   }
 
