@@ -1,7 +1,8 @@
 import { ON_INPUT_CHANGE,
          ON_ADD_EXPENSE,
          ON_SEARCH_FILTER_CHANGE,
-         ON_DELETE_EXPENSE } from './actions';
+         ON_DELETE_EXPENSE,
+         ON_SORT_CHANGE } from './actions';
 
 export const setInputValue = inputValue => ({
     type: ON_INPUT_CHANGE,
@@ -23,4 +24,9 @@ export const setSearchFilterValue = searchFilterInputValue => ({
 export const deleteExpense = expenseId => ({
   type: ON_DELETE_EXPENSE,
   payload: expenseId
-})
+});
+
+export const sortExpensesBy = sortInput => ({
+  type: ON_SORT_CHANGE,
+  payload: sortInput
+});

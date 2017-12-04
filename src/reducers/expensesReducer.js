@@ -6,16 +6,20 @@ import uuid from 'uuid';
 
 const initialState = [{
   id: uuid(),
-  description: 'rent bill',
+  description: 'rent',
   amount: 1500
 }, {
   id: uuid(),
   description: 'credit card bill',
-  amount: 1000
+  amount: 2000
 }, {
   id: uuid(),
-  description: 'student load',
-  amount: 2000
+  description: 'utility bill',
+  amount: 500
+}, {
+  id: uuid(),
+  description: 'student loan',
+  amount: 3000
 }];
 
 const expensesReducer = (state = initialState, action) => {

@@ -4,10 +4,12 @@ import _ from 'lodash';
 
 import ExpenseItem from './ExpenseItem';
 
-const listOfExpenses = (expenses, searchInput) => {
+const listOfExpenses = (expenses, searchInput, sortBy) => {
   const filteredExpenseList = filterExpenses(expenses, searchInput);
 
-  return _.map(filteredExpenseList, eachExpense => (
+  const sortedExpenseList = _.orderBy(filteredExpenseList, sortBy, 'asc');
+
+  return _.map(sortedExpenseList, eachExpense => (
     <ExpenseItem
       key={eachExpense.id}
       id={eachExpense.id}
@@ -23,29 +25,27 @@ const filterExpenses = (expenses, searchInput) => {
     const eachExpenseDescriptionWordArray = eachExpense.description.split(' ');
 
     return _.some(eachExpenseDescriptionWordArray, eachDescriptionWord => {
-      if(_.startsWith(eachDescriptionWord, searchInput)) {
-        return true;
-      }
+        return _.startsWith(eachDescriptionWord, searchInput);
     });
   });
 };
 
-
 const ExpenseList = props => (
   <div>
     <h3>
-      expenses: {props.expenses.length}
+      expenses: {props.expenses.length}  |  sort by: {props.sortBy}
     </h3>
 
     <div>
-      {listOfExpenses(props.expenses, props.searchInput)}
+      {listOfExpenses(props.expenses, props.searchInput, props.sortBy)}
     </div>
   </div>
 );
 
 const mapStateToProps = state => ({
   expenses: state.expensesReducer,
-  searchInput: state.searchFilterReducer
+  searchInput: state.searchFilterReducer,
+  sortBy: state.sortReducer
 });
 
 export default connect(mapStateToProps)(ExpenseList);

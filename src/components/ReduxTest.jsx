@@ -9,7 +9,7 @@ const ReduxTest = props => (
   <div className="landing">
     <h2>{props.reduxTestReducer}</h2>
     <h2>{props.expensesReducer.length}</h2>
-    <h2>{props.filtersReducer.sortBy}</h2>
+    <h2>{props.sortReducer}</h2>
     <input 
       onChange={props.onInputChange} 
       type="text" 
@@ -20,10 +20,10 @@ const ReduxTest = props => (
 );
 
 // object destructuring might be useful here
-const mapStateToProps = ({reduxTestReducer, expensesReducer, filtersReducer}) => ({
+const mapStateToProps = ({reduxTestReducer, expensesReducer, sortReducer}) => ({
   reduxTestReducer,
   expensesReducer,
-  filtersReducer
+  sortReducer
 });
 
 const mapDispatchToProps = dispatch => ({
